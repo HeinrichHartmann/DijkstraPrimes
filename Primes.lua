@@ -8,22 +8,22 @@
 
 function prime(N)
   local x, x_isprime = 1, nil
-  local SQUARE, LIM = 4, 1
-  local P, V = {1}, {}
+  local p_square, p_idx = 4, 1
+  local P, PM = {1}, {}
   while #P < N do
     repeat
       x = x + 2
-      if SQUARE <= x then
-        V[LIM] = SQUARE
-        LIM = LIM + 1
-        SQUARE = P[LIM] * P[LIM]
+      if p_square <= x then
+        PM[p_idx] = p_square
+        p_idx = p_idx + 1
+        p_square = P[p_idx] * P[p_idx]
       end
       x_isprime = true
-      for k = 2, LIM - 1 do
-        if V[k] < x then
-          V[k] = V[k] + P[k]
+      for k = 2, p_idx - 1 do
+        if PM[k] < x then
+          PM[k] = PM[k] + P[k]
         end
-        if x == V[k] then
+        if x == PM[k] then
           x_isprime = false
           break
         end
