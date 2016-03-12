@@ -10,26 +10,23 @@ function prime(N)
   -- returns a table of the first N prime numbers.
   local P = {2} -- we know that 2 is prime
   -- We track the following information:
-  local x, x_isprime = 1, false -- the current prime candidate
+  local x = 1 -- the current prime candidate
   local PM = {} -- PM[k] is always a multiple of P[k]
   local p_square = 4 -- is always square of pivot prime P[#PM+1]
+  local is_prime = function(x)
+    for k = 2, #PM do
+      if x > PM[k] then PM[k] = PM[k] + P[k] end
+      if x == PM[k] then return false end
+    end
+    return true
+  end
   while #P < N do
     repeat
-      x, x_isprime = x + 2, true
-      if p_square <= x then
-        -- Initialize PM[p_idx] to a multiple of the pivotal prime P[p_idx]
-        -- Any multiple, that is not greater than x would give correct results
-        -- We have the ideal candidate at hand:
+      x = x + 2
+      if x >= p_square then
         PM[#PM+1], p_square = p_square, P[#PM+2]^2
       end
-      for k = 2, #PM do
-        if PM[k] < x then PM[k] = PM[k] + P[k] end
-        if x == PM[k] then
-          x_isprime = false
-          break
-        end
-      end
-    until x_isprime
+    until is_prime(x)
     P[#P + 1] = x
   end
   return P
