@@ -7,22 +7,24 @@
 --
 
 function prime(N)
-  local x, x_isprime = 1, nil
-  local p_square, p_idx = 4, 1
-  local P, PM = {1}, {}
+  -- returns a table of the first N prime numbers.
+  local P = {2} -- we know that 2 is prime
+  -- We track the following information:
+  local x, x_isprime = 1, false -- the current prime candidate
+  local PM = {} -- PM[k] is always a multiple of P[k]
+  local p_square, p_idx = 4, 1 -- P[p_idx]^2 == p_square
   while #P < N do
     repeat
-      x = x + 2
+      x, x_isprime = x + 2, true
       if p_square <= x then
+        -- Initialize PM[p_idx] to a multiple of the pivotal prime P[p_idx]
+        -- Any multiple, that is not greater than x would give correct results.
+        -- We have the ideal candidate at hand:
         PM[p_idx] = p_square
-        p_idx = p_idx + 1
-        p_square = P[p_idx] * P[p_idx]
+        p_idx, p_square = p_idx+1, P[p_idx+1]^2
       end
-      x_isprime = true
       for k = 2, p_idx - 1 do
-        if PM[k] < x then
-          PM[k] = PM[k] + P[k]
-        end
+        if PM[k] < x then PM[k] = PM[k] + P[k] end
         if x == PM[k] then
           x_isprime = false
           break
