@@ -19,13 +19,12 @@ function prime(N)
         SQUARE = P[LIM] * P[LIM]
       end
       x_isprime = true
-      local K = 2
-      while x_isprime and K < LIM do
-        if V[K] < x then
-          V[K] = V[K] + P[K]
+      for k = 2, LIM - 1 do
+        if not x_isprime then break end
+        if V[k] < x then
+          V[k] = V[k] + P[k]
         end
-        x_isprime = x ~= V[K]
-        K = K + 1
+        x_isprime = x ~= V[k]
       end
     until x_isprime
     P[#P + 1] = x
