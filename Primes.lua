@@ -5,16 +5,11 @@
 --
 --     A.S. Tanenbaum - General-Purose Macro Processor as a Poor Man's Compiler-Compiler, IEEE TOSE, Sol.SE-2, No.2, JUNE 1976
 --
--- Changes:
--- - literal tranlation to lua
--- - remove constants
---
 
 function PRIME(N)  -- PROCEDURE DECLARATION;
   local X, SQUARE, I, K, LIM, PRIM -- DECLARATION OF VARIABLES;
   local P, V = {}, {}
   P[1] = 2 -- ASSIGNMENT TO FIRST ELEMENT OF p;
-  print(2) -- OUTPUT A LINE CONTAINING THE NUMBER 2;
   X = 1
   LIM = 1
   SQUARE = 4
@@ -37,7 +32,13 @@ function PRIME(N)  -- PROCEDURE DECLARATION;
       end
     until PRIM -- THIS LINE CLOSES THE REPEAT
     P[I] = X
-    print(X)
+  end
+  return P
+end
+
+function main()
+  for _,p in pairs(PRIME(100)) do
+    print(p)
   end
 end
-PRIME(100)
+main()
