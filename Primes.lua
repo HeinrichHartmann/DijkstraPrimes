@@ -12,18 +12,17 @@ function prime(N)
   -- We track the following information:
   local x, x_isprime = 1, false -- the current prime candidate
   local PM = {} -- PM[k] is always a multiple of P[k]
-  local p_square, p_idx = 4, 1 -- P[p_idx]^2 == p_square
+  local p_square = 4 -- is always square of pivot prime P[#PM+1]
   while #P < N do
     repeat
       x, x_isprime = x + 2, true
       if p_square <= x then
         -- Initialize PM[p_idx] to a multiple of the pivotal prime P[p_idx]
-        -- Any multiple, that is not greater than x would give correct results.
+        -- Any multiple, that is not greater than x would give correct results
         -- We have the ideal candidate at hand:
-        PM[p_idx] = p_square
-        p_idx, p_square = p_idx+1, P[p_idx+1]^2
+        PM[#PM+1], p_square = p_square, P[#PM+2]^2
       end
-      for k = 2, p_idx - 1 do
+      for k = 2, #PM do
         if PM[k] < x then PM[k] = PM[k] + P[k] end
         if x == PM[k] then
           x_isprime = false
