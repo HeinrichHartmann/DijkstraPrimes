@@ -7,11 +7,10 @@
 --
 -- Changes:
 -- - literal tranlation to lua
+-- - remove constants
 --
 
-local N = 100
-local M = 10
-function PRIME()  -- PROCEDURE DECLARATION;
+function PRIME(N)  -- PROCEDURE DECLARATION;
   local X, SQUARE, I, K, LIM, PRIM -- DECLARATION OF VARIABLES;
   local P, V = {}, {}
   P[1] = 2 -- ASSIGNMENT TO FIRST ELEMENT OF p;
@@ -41,4 +40,4 @@ function PRIME()  -- PROCEDURE DECLARATION;
     print(X)
   end
 end
-PRIME()
+PRIME(100)
