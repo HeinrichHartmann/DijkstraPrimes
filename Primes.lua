@@ -10,7 +10,7 @@ function prime(N)
   local x, x_isprime = 1, nil
   local SQUARE, LIM = 4, 1
   local P, V = {1}, {}
-  for I = 2, N do
+  while #P < N do
     repeat
       x = x + 2
       if SQUARE <= x then
@@ -28,7 +28,7 @@ function prime(N)
         K = K + 1
       end
     until x_isprime
-    P[I] = x
+    P[#P + 1] = x
   end
   return P
 end
