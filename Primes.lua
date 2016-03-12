@@ -20,11 +20,13 @@ function prime(N)
       end
       x_isprime = true
       for k = 2, LIM - 1 do
-        if not x_isprime then break end
         if V[k] < x then
           V[k] = V[k] + P[k]
         end
-        x_isprime = x ~= V[k]
+        if x == V[k] then
+          x_isprime = false
+          break
+        end
       end
     until x_isprime
     P[#P + 1] = x
