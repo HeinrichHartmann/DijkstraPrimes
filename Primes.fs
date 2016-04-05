@@ -13,7 +13,7 @@
 
   0. You just DO WHAT THE FUCK YOU WANT TO.
   
-  Copyright © 2061 PoroCYon
+  Copyright © 2016 PoroCYon
 This work is free software. It comes without any warranty, to
 the extent permitted by applicable law. You can redistribute it
 and/or modify it under the terms of the Do What The Fuck You
