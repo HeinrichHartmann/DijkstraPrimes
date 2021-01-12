@@ -6,7 +6,7 @@
 --     A.S. Tanenbaum - General-Purose Macro Processor as a Poor Man's Compiler-Compiler,
 --     IEEE TOSE, Sol.SE-2, No.2, JUNE 1976
 --
--- translated and refactored into ideomatic lua, by Heinrich Hartmann, 2016-03-12
+-- translated and refactored into idiomatic lua, by Heinrich Hartmann, 2016-03-12
 --
 
 function primes(N)
