@@ -10,3 +10,4 @@ translated and refactored into idiomatic lua.
 
 - Read more: http://heinrichhartmann.com/2016/04/03/Dijkstra's-Prime-Number-Algorithm.html
 
+- Hacker News Discussion: https://news.ycombinator.com/item?id=11429163
